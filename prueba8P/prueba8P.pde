@@ -4,7 +4,7 @@ Serial mipuerto;
 String cadena="";
 String[] sensoresString;
 float[] sensores;
-
+int[] aux={10,10,10,10,10,10};
 
 void setup(){
   size(300,300);
@@ -22,10 +22,21 @@ void draw(){
       sensores=float(sensoresString);
       for(int i=0;i<sensores.length;i++){
         if(sensores[i]>700){
-            piano.tecla(i);            
-        }
+           if(aux[i]!=i){
+                piano.tecla(i);
+                aux[i]=i;
+           
+           }
+
+          
+           
+ 
+        }else if(sensores[i]<700){
+               aux[i]=10;
+           }
         //println(sensores[i]);
       }
+      
      
     }
     
